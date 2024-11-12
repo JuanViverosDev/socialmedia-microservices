@@ -1,0 +1,45 @@
+version: '3'
+services:
+  auth-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: auth
+    environment:
+      - PORT=3001
+    ports:
+      - "3001:3000"
+
+  message-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: message
+    environment:
+      - PORT=3002
+    ports:
+      - "3002:3000"
+
+  follow-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: follow
+    environment:
+      - PORT=3003
+    ports:
+      - "3003:3000"
+
+  api-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SERVICE_NAME: gateway
+    environment:
+      - PORT=3004
+    ports:
+      - "3004:3000"
